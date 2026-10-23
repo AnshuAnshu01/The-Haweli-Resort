@@ -1,0 +1,478 @@
+@import "tailwindcss";
+
+:root {
+  --font-display: 'Instrument Serif', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* The Haweli Resort - Royal Architectural Palette */
+  /* Primary Brand Color: Deep Royal Navy */
+  --royal-navy: #102648;
+  --royal-navy-deep: #0b1a32;
+  --royal-navy-light: #163462;
+
+  /* Button Hover & Interactive Elements: Luxury Blue */
+  --luxury-blue: #2B4266;
+  --luxury-blue-light: #37537e;
+
+  /* Subtle Highlights: Muted Slate Blue */
+  --slate-blue: #4B658E;
+  --slate-blue-light: #617ca6;
+
+  /* Main Background: 60% Warm Ivory Cream */
+  --warm-ivory: #F4F0EA;
+  --warm-ivory-light: #FAF8F5;
+
+  /* Secondary Backgrounds: Soft Ivory */
+  --soft-ivory: #E8E1D8;
+  --soft-ivory-dark: #DDD4C8;
+
+  /* Secondary Accents: 10% Rich Heritage Brown */
+  --heritage-brown: #523122;
+  --heritage-brown-light: #6e432f;
+  --heritage-brown-dark: #3b2217;
+
+  /* Premium Details: 5% Champagne Gold */
+  --champagne-gold: #C8A96B;
+  --champagne-gold-light: #DFCA9B;
+  --champagne-gold-dark: #A58444;
+  --champagne-gold-glow: rgba(200, 169, 107, 0.4);
+
+  /* Readable Body Text: Dark Charcoal */
+  --dark-charcoal: #202638;
+  --charcoal-muted: #424c61;
+
+  /* Borders & Dividers: Light Grey-Blue */
+  --light-grey-blue: #CDD4DC;
+  --grey-blue-subtle: rgba(205, 212, 220, 0.65);
+
+  /* Active Theme Semantic Mapping (Default: Day Palace - 60% Ivory, 25% Navy, 10% Brown, 5% Gold) */
+  --bg-primary: #F4F0EA;
+  --bg-secondary: #E8E1D8;
+  --bg-card: #FFFFFF;
+  --bg-card-muted: #E8E1D8;
+  --bg-navbar: #102648;
+  --bg-footer: #102648;
+
+  --text-primary: #102648;
+  --text-body: #202638;
+  --text-secondary: #4B658E;
+  --text-muted: #5A6678;
+  --text-gold: #C8A96B;
+
+  --accent-gold: #C8A96B;
+  --accent-gold-light: #DFCA9B;
+  --accent-gold-dark: #A58444;
+  --accent-brown: #523122;
+  --accent-navy: #102648;
+  --interactive-blue: #2B4266;
+
+  --border-subtle: #CDD4DC;
+  --border-strong: #C8A96B;
+  --border-navy: rgba(16, 38, 72, 0.2);
+}
+
+/* Night Palace Mode (Preserves Navy, Gold, Brown & Charcoal Contrast) */
+.dark-theme,
+.night-palace {
+  --bg-primary: #0A182D;
+  --bg-secondary: #102648;
+  --bg-card: #132742;
+  --bg-card-muted: #1A3459;
+  --bg-navbar: #0B1A32;
+  --bg-footer: #081426;
+
+  --text-primary: #F4F0EA;
+  --text-body: #E8E1D8;
+  --text-secondary: #CDD4DC;
+  --text-muted: #8EA0B8;
+
+  --border-subtle: rgba(205, 212, 220, 0.25);
+  --border-strong: #C8A96B;
+  --border-navy: rgba(200, 169, 107, 0.35);
+}
+
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+html {
+  /* JS momentum scroller takes over on desktop; keep auto */
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* GPU-accelerated text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* ── Mobile-first global base ──────────────────────────────── */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Touch targets and instant touch response */
+button,
+a,
+[role="button"],
+[role="switch"],
+select,
+input[type="checkbox"],
+input[type="radio"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px !important;
+  /* prevents iOS auto-zoom on focus */
+}
+
+/* Safe-area padding for notched phones (iPhone X+) */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Avoid overflow from embedded media */
+img,
+video,
+iframe,
+canvas {
+  max-width: 100%;
+}
+
+/* Utility to hide scrollbars for clean swipeable mobile tabs */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile smooth swipe container */
+.mobile-swipe-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Readable line-lengths on small screens */
+p,
+li {
+  max-width: 70ch;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+/* Primary Brand Button (Deep Royal Navy #102648, hover Luxury Blue #2B4266, Champagne Gold border) */
+.btn-royal-primary {
+  background-color: #102648;
+  color: #F4F0EA;
+  border: 1px solid #C8A96B;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(16, 38, 72, 0.25);
+}
+
+.btn-royal-primary:hover {
+  background-color: #2B4266;
+  border-color: #DFCA9B;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(43, 66, 102, 0.35), 0 0 12px rgba(200, 169, 107, 0.3);
+}
+
+/* Secondary Heritage Button (Rich Heritage Brown #523122, hover lighter brown, Champagne Gold border) */
+.btn-heritage {
+  background-color: #523122;
+  color: #F4F0EA;
+  border: 1px solid #C8A96B;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(82, 49, 34, 0.25);
+}
+
+.btn-heritage:hover {
+  background-color: #6e432f;
+  color: #FFFFFF;
+  border-color: #DFCA9B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(82, 49, 34, 0.35);
+}
+
+/* Champagne Gold Accent Button */
+.btn-gold {
+  background-color: #C8A96B;
+  color: #102648;
+  border: 1px solid #A58444;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(200, 169, 107, 0.3);
+}
+
+.btn-gold:hover {
+  background-color: #DFCA9B;
+  color: #0b1a32;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(200, 169, 107, 0.45);
+}
+
+/* Outline Luxury Button */
+.btn-outline-royal {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-royal:hover {
+  border-color: #C8A96B;
+  background-color: rgba(200, 169, 107, 0.1);
+  color: #102648;
+}
+
+/* Liquid Glass Royal Effect (Used in Hero overlay) */
+.liquid-glass {
+  background: rgba(16, 38, 72, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 169, 107, 0.45);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.18), 0 10px 28px -6px rgba(16, 38, 72, 0.4);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.liquid-glass:hover {
+  background: rgba(43, 66, 102, 0.75);
+  border-color: #C8A96B;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 14px 34px -6px rgba(16, 38, 72, 0.5), 0 0 16px rgba(200, 169, 107, 0.35);
+}
+
+/* Royal Architectural Glass Card (Soft Ivory & Crisp White with Light Grey-Blue and Gold trim) */
+.royal-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px -4px rgba(16, 38, 72, 0.06);
+}
+
+.royal-card:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 16px 36px -10px rgba(16, 38, 72, 0.12), 0 0 12px rgba(200, 169, 107, 0.15);
+}
+
+.dark-theme .royal-card,
+.night-palace .royal-card {
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .royal-card:hover,
+.night-palace .royal-card:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(200, 169, 107, 0.25);
+}
+
+/* Secondary Section Panel */
+.section-secondary {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Gold Text Gradient */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #DFCA9B 0%, #C8A96B 50%, #A58444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Heritage Brown Pill Tag */
+.badge-heritage {
+  background-color: #523122;
+  color: #F4F0EA;
+  border: 1px solid rgba(200, 169, 107, 0.4);
+  font-family: var(--font-body);
+}
+
+/* Champagne Gold Badge */
+.badge-gold {
+  background-color: rgba(200, 169, 107, 0.15);
+  color: #C8A96B;
+  border: 1px solid rgba(200, 169, 107, 0.4);
+}
+
+/* Royal Navy Badge */
+.badge-navy {
+  background-color: #102648;
+  color: #F4F0EA;
+  border: 1px solid rgba(200, 169, 107, 0.4);
+}
+
+/* Animations */
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-rise {
+  animation: fade-rise 0.7s ease-out both;
+}
+
+.animate-fade-rise-delay {
+  animation: fade-rise 0.7s ease-out 0.15s both;
+}
+
+.animate-fade-rise-delay-2 {
+  animation: fade-rise 0.7s ease-out 0.3s both;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(200, 169, 107, 0.4));
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 35px rgba(200, 169, 107, 0.8));
+  }
+}
+
+@keyframes float-gentle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 16s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-slow 22s linear infinite reverse;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar — ultra-thin luxury styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 169, 107, 0.35);
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A96B;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 169, 107, 0.35) transparent;
+}

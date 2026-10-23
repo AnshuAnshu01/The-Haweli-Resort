@@ -1,0 +1,8 @@
+{
+  "name": "The Haweli Resort - Restaurant, Banquets & Luxury Stays (India, 2020)",
+  "description": "Official portal of The Haweli Resort & Restaurant, Aurangabad, Bihar. Luxury suites, authentic dining, marriage lawns, and direct booking engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
