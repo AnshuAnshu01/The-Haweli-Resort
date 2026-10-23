@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Calendar,
   Users,
@@ -26,6 +26,18 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenBookingModal,
   onOpenSplash,
 }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
+      videoRef.current.play().catch(() => {
+        // Safe catch for browser autoplay policies
+      });
+    }
+  }, []);
+
   // Quick search state
   const [quickCheckIn, setQuickCheckIn] = useState('2026-10-25');
   const [quickCheckOut, setQuickCheckOut] = useState('2026-10-27');
@@ -67,16 +79,18 @@ export const HomePage: React.FC<HomePageProps> = ({
       <div className="relative min-h-[88svh] sm:min-h-[85vh] w-full flex flex-col justify-center bg-[#0A182D]">
         {/* Fullscreen Video Background - Continuous Silent Loop */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
         >
-          <source
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
-            type="video/mp4"
-          />
+          <source src="/assets/bg-video.mp4" type="video/mp4" />
+          <source src="/assets/bg video.mp4" type="video/mp4" />
+          <source src="/bg-video.mp4" type="video/mp4" />
+          <source src="/bg video.mp4" type="video/mp4" />
         </video>
 
         {/* Cinematic Scrim for perfect contrast across light/dark views */}

@@ -41,12 +41,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBeginJourney, onOpen
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
-          type="video/mp4"
-        />
+        <source src="/assets/bg-video.mp4" type="video/mp4" />
+        <source src="/assets/bg video.mp4" type="video/mp4" />
+        <source src="/bg-video.mp4" type="video/mp4" />
+        <source src="/bg video.mp4" type="video/mp4" />
       </video>
 
       {/* Hero Section Container */}
