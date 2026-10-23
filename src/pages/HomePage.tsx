@@ -5,7 +5,6 @@ import {
   Star,
   ArrowRight,
   ShieldCheck,
-  Sparkles,
   MapPin,
   Award,
   MessageSquare,
@@ -113,12 +112,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div
-            className="flex items-center gap-2 mb-2 text-xs font-mono tracking-widest uppercase animate-fade-rise"
+            className="mb-2 text-xs font-mono tracking-widest uppercase animate-fade-rise"
             style={{ color: '#DFCA9B', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}
           >
-            <Sparkles className="w-3 h-3 text-[#C8A96B]" />
             <span>The Haweli Resort &amp; Restaurant · India, 2020</span>
-            <Sparkles className="w-3 h-3 text-[#C8A96B]" />
           </div>
 
           {/* Main Hero Title */}
@@ -162,24 +159,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             destination marriage lawns, and authentic royal gastronomy since 2020.
           </p>
 
-          {/* Official Tagline Badge - Guaranteed 100% visible in dark theme */}
-          <div
-            className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border shadow-xl animate-fade-rise-delay max-w-full text-center flex-wrap sm:flex-nowrap justify-center"
-            style={{
-              backgroundColor: 'rgba(11, 26, 50, 0.92)',
-              borderColor: '#C8A96B',
-              backdropFilter: 'blur(10px)'
-            }}
-          >
-            <Sparkles className="w-3.5 h-3.5 text-[#C8A96B] shrink-0" />
-            <span
-              className="text-xs sm:text-sm font-serif italic tracking-wide"
-              style={{ color: '#FFFFFF', textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}
-            >
-              &ldquo;{RESORT_METADATA.tagline}&rdquo; &middot; {RESORT_METADATA.motto}
-            </span>
-            <Sparkles className="w-3.5 h-3.5 text-[#C8A96B] shrink-0" />
-          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-7 sm:mt-8 animate-fade-rise-delay-2 w-full max-w-sm sm:max-w-none mx-auto">
             <button

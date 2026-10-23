@@ -90,16 +90,6 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, onReplaySplash }
               >
                 <Compass className="w-4 h-4 text-[#C8A96B]" />
               </a>
-              <a
-                href={RESORT_METADATA.officialWebsite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-[#CDD4DC]/30 text-[#E8E1D8] hover:text-[#C8A96B] hover:border-[#C8A96B] hover:bg-[#2B4266] transition-all shadow-sm flex items-center justify-center active:scale-95"
-                title="Official Website"
-                aria-label="Official Website"
-              >
-                <ExternalLink className="w-4 h-4 text-[#C8A96B]" />
-              </a>
             </div>
           </div>
 

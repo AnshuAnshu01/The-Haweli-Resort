@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Volume2, VolumeX, Pause, Play, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, Pause, Play } from 'lucide-react';
 import { RESORT_METADATA } from '../data/resortData';
 
 interface HeroSectionProps {
@@ -70,10 +70,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBeginJourney, onOpen
         </div>
 
         {/* Brand Kicker with Editorial Numbering / Established Info */}
-        <div className="flex items-center gap-2 mb-3 text-xs font-mono tracking-widest uppercase text-amber-300/90 animate-fade-rise">
-          <Sparkles className="w-3 h-3 text-amber-400" />
+        <div className="mb-3 text-xs font-mono tracking-widest uppercase text-amber-300/90 animate-fade-rise">
           <span>The Haweli Resort &amp; Restaurant · India, 2020</span>
-          <Sparkles className="w-3 h-3 text-amber-400" />
         </div>
 
         {/* H1 with exact typography and em elements */}
@@ -89,11 +87,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBeginJourney, onOpen
         <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay">
           We&apos;re designing tools for deep thinkers, bold creators, and quiet rebels. Amid the
           chaos, we build digital spaces for sharp focus and inspired work.
-        </p>
-
-        {/* Authentic Haweli Resort Motto */}
-        <p className="text-xs sm:text-sm text-foreground/80 font-serif italic mt-3 animate-fade-rise-delay">
-          &ldquo;{RESORT_METADATA.tagline}&rdquo; · Luxuries For You
         </p>
 
         {/* CTA Button as specified */}
